@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+    <title>
+    Scott Pellett's TrueCar Assignment
+    </title>
+
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+    {% endblock styles %}
+
+    {% block scripts %}
+    <!--<script src="{{ STATIC_URL }}scripts/jquery-1.9.1.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    {% endblock %}
+  </head>
+
+  <body>
+    <div id="headerSection">
+    </div>
+
+    <div id="main">
+      {% block main %}
+      {% endblock %}
+    </div>
+
+    <div id="footerSection">
+    Implemented by <a href="http://www.linkedin.com/pub/scott-pellett/6/76a/aa7">Scott Pellett</a>. 2013.
+    </div>
+  </body>
+</html>

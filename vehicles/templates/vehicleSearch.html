@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block styles %}
+{{ block.super }}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/vehicleSearch.css" %}" />
+{% endblock styles %}
+
+{% block main %}
+<div id="formSection">
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Search" />
+  </form>
+</div>
+
+<div id="resultSection">
+  <h3>Results for {{ vsn }}</h3>
+
+  {% if not matches %}
+  <div>
+  There appears to be no matches for "{{ vsn }}"
+  </div>
+  {% else %}
+    {% for match in matches %}
+    <div class="searchResult">
+      <div>VSN: {{ match.serial_number }}</div>
+      <div>Make: {{ match.vehicle_model.manufacturer }}</div>
+      <div>Model: {{ match.vehicle_model.name }}</div>
+      <div>Year: {{ match.year }}</div>
+      <div>Trim ID: {{ match.trim_style.vendor_trim_id }}</div>
+      <div>Trim Name: {{ match.trim_style.name }}</div>
+    </div>
+    {% endfor %} 
+  {% endif %}
+</div>
+{% endblock main %}

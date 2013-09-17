@@ -1,0 +1,12 @@
+body {
+  margin: 0px;
+}
+
+#footerSection {
+  height: 25px;
+}
+
+#headerSection {
+  background-color: #1559A6;
+  height: 75px;
+}
